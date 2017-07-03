@@ -12,8 +12,9 @@
 /.solr_wrapper
 /.solr_wrapper.yml
 
-# Ignore all config yaml files
+# Ignore all config yaml files, with some exceptions
 /config/*.yml
+!/config/schema_org.yml
 
 # Environment configs
 /config/environments/*.rb
