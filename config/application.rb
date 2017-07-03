@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module DukespaceHyrax
   class Application < Rails::Application
-    
+
 
       # The compile method (default in tinymce-rails 4.5.2) doesn't work when also
       # using tinymce-rails-imageupload, so revert to the :copy method
@@ -24,6 +24,15 @@ module DukespaceHyrax
     # -- all .rb files in that directory are automatically loaded.
 
     config.active_job.queue_adapter = :inline
+
+    # Load environment variables from file
+    # http://railsapps.github.io/rails-environment-variables.html
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'local_env.yml')
+      if File.exists?(env_file)
+        YAML.load_file(env_file).each { |key, value| ENV[key.to_s] = value.to_s }
+      end
+    end
 
   end
 end
