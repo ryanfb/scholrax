@@ -27,5 +27,8 @@ fits.log
 # Ignore Byebug command history file.
 .byebug_history
 
+# Pre-compiled assets
+/public/assets
+
 # Ignore ruby-gemset file.
 .ruby-gemset
