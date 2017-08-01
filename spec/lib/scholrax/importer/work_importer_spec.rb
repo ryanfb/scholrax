@@ -14,6 +14,8 @@ module Scholrax::Importer
 
     before do
       Hyrax::AdminSetCreateService.call(admin_set: admin_set, creating_user: nil)
+      # Stub out characterization for Travis, which doesn't have fits installed.
+      allow(CharacterizeJob).to receive(:perform_later)
     end
 
     it "creates the work, adding the metadata and files" do
