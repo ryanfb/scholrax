@@ -8,6 +8,7 @@
 /.bundle
 
 # Ignore certain config files
+/config/analytics.yml
 /config/local_env.yml
 /config/metadata_mapping.yml
 /config/resque-pool.yml
