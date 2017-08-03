@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<dublin_core schema="dc">
+  <dcvalue element="contributor" qualifier="author">Adams, A</dcvalue>
+  <dcvalue element="contributor" qualifier="author">Barnes, B</dcvalue>
+  <dcvalue element="coverage" qualifier="spatial">England</dcvalue>
+  <dcvalue element="date" qualifier="accessioned">2017-07-10T21:37:32Z</dcvalue>
+  <dcvalue element="date" qualifier="available">2017-07-10T21:37:32Z</dcvalue>
+  <dcvalue element="date" qualifier="issued">2013-02</dcvalue>
+  <dcvalue element="identifier" qualifier="none">https://www.ncbi.nlm.nih.gov/pubmed/999999</dcvalue>
+  <dcvalue element="identifier" qualifier="none">abc.012.12345</dcvalue>
+  <dcvalue element="identifier" qualifier="citation">Abc J Cats, 2013, 33, pp. 7 - 10</dcvalue>
+  <dcvalue element="identifier" qualifier="issn">11234-987X</dcvalue>
+  <dcvalue element="identifier" qualifier="uri">http://hdl.handle.net/12345/98765</dcvalue>
+  <dcvalue element="description" qualifier="abstract">Cats are the leading cause of happiness and long life.</dcvalue>
+  <dcvalue element="description" qualifier="provenance">[2016-04-28T16:11:36.272] File was deposited via Feline Publications by owning user Adams, Abigail &lt;abby.adams@example.com&gt;</dcvalue>
+  <dcvalue element="description" qualifier="provenance">[2017-10-19T17:37:32.609] File was deposited via Feline Publications by owning user Adams, Abigail &lt;abby.adams@example.com&gt;</dcvalue>
+  <dcvalue element="description" qualifier="provenance" language="en">Submitted by Feline Feline (a.b@example.com) on 2017-10-19T21:37:32Z
+No. of bitstreams: 2
+Catness.pdf: 154717 bytes, checksum: 35b60e706d3cec4d4710be867163714c (MD5)
+Open-Access-Deposit-license-Feb2017.pdf: 54455 bytes, checksum: 0d877d368e34cf3df81789acf6ba812e (MD5)</dcvalue>
+  <dcvalue element="description" qualifier="provenance" language="en">Made available in DSpace on 2017-10-19T21:37:32Z (GMT). No. of bitstreams: 2
+    Catness.pdf: 154717 bytes, checksum: 35b60e706d3cec4d4710be867163714c (MD5)
+    Open-Access-Deposit-license-Feb2017.pdf: 54455 bytes, checksum: 0d877d368e34cf3df81789acf6ba812e (MD5)
+  Previous issue date: 2012-01</dcvalue>
+  <dcvalue element="format" qualifier="extent">7 - 10</dcvalue>
+  <dcvalue element="language" qualifier="none">eng</dcvalue>
+  <dcvalue element="relation" qualifier="ispartof">Abc J Cats</dcvalue>
+  <dcvalue element="relation" qualifier="isversionof">10.5754/abc.012.12345</dcvalue>
+  <dcvalue element="subject" qualifier="none">Animals</dcvalue>
+  <dcvalue element="subject" qualifier="none">Happiness</dcvalue>
+  <dcvalue element="subject" qualifier="none">Life Transformation</dcvalue>
+  <dcvalue element="title" qualifier="none">Cats Are Happiness</dcvalue>
+  <dcvalue element="type" qualifier="none">Journal Article</dcvalue>
+</dublin_core>
