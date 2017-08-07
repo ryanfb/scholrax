@@ -21,6 +21,9 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'resque'
+gem 'resque-pool'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -52,8 +55,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'hyrax', '1.0.0.rc2'
+gem 'hyrax', '~> 1.0.3'
 group :development, :test do
+  gem 'database_cleaner'
   gem 'solr_wrapper', '>= 0.3'
 end
 
@@ -63,4 +67,9 @@ gem 'devise-guests', '~> 0.5'
 group :development, :test do
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
+end
+
+group :production do
+  gem 'pg'
+  gem 'therubyracer', platforms: :ruby
 end

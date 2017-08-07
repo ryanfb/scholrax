@@ -7,16 +7,12 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore fcrepo and solr wrapper config files
-/.fcrepo_wrapper
-/.solr_wrapper
-/.solr_wrapper.yml
-
-# Ignore all config yaml files
-/config/*.yml
-
-# Environment configs
-/config/environments/*.rb
+# Ignore certain config files
+/config/analytics.yml
+/config/local_env.yml
+/config/metadata_mapping.yml
+/config/resque-pool.yml
+/config/role_map.yml
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -27,9 +23,14 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+dump.rdb
+fits.log
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Pre-compiled assets
+/public/assets
 
 # Ignore ruby-gemset file.
 .ruby-gemset

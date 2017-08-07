@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+  - 2.3.1
+before_script:
+ - "cp config/role_map.yml.sample config/role_map.yml"
+script: "bundle exec rake ci"
+jdk:
+  - oraclejdk8
+services:
+  - redis-server
