@@ -27,20 +27,33 @@ module Scholrax::Importer::Factory
     def create
       attrs = create_attributes
       @object = klass.new
-      work_actor.create(attrs)
+      env = environment(attrs)
+      work_actor.create(env)
+    end
+
+    def environment(attrs)
+      Hyrax::Actors::Environment.new(object, Ability.new(User.batch_user), attrs)
     end
 
     def work_actor
-      Hyrax::CurationConcern.actor_factory = Hyrax::ActorFactory
-      Hyrax::CurationConcern.actor(@object, Ability.new(User.batch_user))
+      Hyrax::CurationConcern.actor
     end
 
     def file_attributes
-      files_directory.present? && files.present? ? { files: file_paths } : {}
+      files_directory.present? && files.present? ? { uploaded_files: uploaded_files } : {}
     end
 
     def file_paths
-      files.map { |file_name| File.new(File.join(files_directory, file_name)) }
+      files.map { |file_name| File.join(files_directory, file_name) }
+    end
+
+    def uploaded_files
+      files.map do |file_name|
+        f = File.open(File.join(files_directory, file_name))
+        upf = Hyrax::UploadedFile.create(file: f, user: User.batch_user)
+        f.close
+        upf.id
+      end
     end
 
     def permitted_attributes
