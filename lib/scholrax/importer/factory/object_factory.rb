@@ -8,7 +8,7 @@ module Scholrax::Importer::Factory
     def initialize(attributes, files_dir = nil, files = [])
       @files_directory = files_dir
       @files = files
-      @attributes = attributes
+      @attributes = attributes.symbolize_keys
     end
 
     def run
@@ -21,7 +21,12 @@ module Scholrax::Importer::Factory
     end
 
     def transform_attributes
-      attributes.slice(*permitted_attributes).merge(file_attributes)
+      attributes.slice(*permitted_attributes).merge(embargo_release_date_attribute).merge(file_attributes)
+    end
+
+    def embargo_release_date_attribute
+      attributes[:embargo_release_date].present? ? { embargo_release_date: attributes[:embargo_release_date].first }
+                                                 : {}
     end
 
     def create
@@ -57,7 +62,8 @@ module Scholrax::Importer::Factory
     end
 
     def permitted_attributes
-      klass.properties.keys << :admin_set_id
+      klass.properties.keys.map(&:to_sym) + [ :admin_set_id, :embargo_release_date, :visibility,
+                                              :visibility_after_embargo, :visibility_during_embargo ]
     end
 
   end

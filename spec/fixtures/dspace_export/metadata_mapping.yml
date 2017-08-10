@@ -3,3 +3,4 @@ coverage|spatial: based_near
 date|accessioned: date_created
 identifier|none: identifier
 title: title
+embargo|release: embargo_release_date
