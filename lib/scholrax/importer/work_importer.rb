@@ -13,8 +13,8 @@ module Scholrax::Importer
 
     def call
       attrs = metadata_attributes
-      attrs.merge!({ admin_set_id: admin_set_id })
-      attrs.merge!({ visibility: visibility })
+      attrs.merge!({ admin_set_id: admin_set_id, visibility: visibility })
+      attrs.merge!(placeholder_attributes)
       attrs.merge!(embargo_attributes) if embargoed?
       Scholrax::Importer::Factory.for(Work).new(attrs, export_path, contents_files['ORIGINAL']).run
     end
@@ -35,6 +35,11 @@ module Scholrax::Importer
     def contents_files
       contents_file_reader = ContentsFileReader.new(File.join(export_path, 'contents'))
       contents_file_reader.call
+    end
+
+    def placeholder_attributes
+      { keyword: [ Scholrax.config.importer_keyword ],
+        rights_statement: [ Scholrax.config.importer_rights_statement ] }
     end
 
     def embargoed?

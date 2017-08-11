@@ -4,6 +4,8 @@ RSpec.shared_examples "an imported work" do
   it "has the correct attributes" do
     expect(work.admin_set).to eq(admin_set)
     expect(work.title).to match_array([ 'Cats Are Happiness' ])
+    expect(work.keyword).to match_array([ Scholrax.config.importer_keyword ])
+    expect(work.rights_statement).to match_array([ Scholrax.config.importer_rights_statement ])
     # Temporarily commented out until we can figure out why this test won't pass
     # expect(work.file_sets.map(&:label)).to match_array(expected_file_set_labels)
   end
