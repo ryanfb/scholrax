@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/samvera/hyrax
-  revision: a585e4df24ac1ccbffb227f968b9d28a0bb1d474
-  ref: a585e4df24ac1ccbffb227f968b9d28a0bb1d474
+  revision: 8dbd9766d45e476412984be74aa749ef11a9bad6
+  ref: 8dbd9766d45e476412984be74aa749ef11a9bad6
   specs:
     hyrax (2.0.0.alpha)
       active-fedora (>= 11.3.1)
@@ -120,13 +120,13 @@ GEM
       execjs
     awesome_nested_set (3.1.3)
       activerecord (>= 4.0.0, < 5.2)
-    aws-sdk (2.10.23)
-      aws-sdk-resources (= 2.10.23)
-    aws-sdk-core (2.10.23)
+    aws-sdk (2.10.26)
+      aws-sdk-resources (= 2.10.26)
+    aws-sdk-core (2.10.26)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.10.23)
-      aws-sdk-core (= 2.10.23)
+    aws-sdk-resources (2.10.26)
+      aws-sdk-core (= 2.10.26)
     aws-sigv4 (1.0.1)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -231,7 +231,7 @@ GEM
       dry-equalizer (~> 0.2)
       dry-types (~> 0.9, >= 0.9.0)
       ice_nine (~> 0.11)
-    dry-types (0.11.0)
+    dry-types (0.11.1)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1)
       dry-container (~> 0.3)
@@ -471,7 +471,7 @@ GEM
       activesupport
       nokogiri (>= 1.4.2)
       solrizer (~> 3.3)
-    openseadragon (0.3.3)
+    openseadragon (0.4.0)
       rails (> 3.2.0)
     orm_adapter (0.5.0)
     os (0.9.6)
