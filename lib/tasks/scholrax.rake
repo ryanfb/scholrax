@@ -1,4 +1,22 @@
 namespace :scholrax do
+
+  namespace :dspace_importer do
+    desc "Scan folder of export folders and queue up as work importer jobs."
+    puts "Importer parms: EXPORT_FOLDER, ADMIN_SET, optional: METADATA_MAPPING_FILE"
+ 
+    task :call => :environment do
+      raise "Must specify folder path to exported folders. Ex.: EXPORT_FOLDER=/path/to/folders" unless ENV["EXPORT_FOLDER"]
+      raise "Must specify an admin set id. Ex.: ADMIN_SET=adminset_a" unless ENV["ADMIN_SET"]
+
+      processor_args =  { export_top_folder: ENV["EXPORT_FOLDER"] }
+      processor_args[:admin_set_id] = ENV["ADMIN_SET"] if ENV["ADMIN_SET"]
+      processor_args[:metadata_mapping_file] = ENV['METADATA_MAPPING_FILE'] if ENV['METADATA_MAPPING_FILE']
+      
+      processor = Scholrax::Importer::WorksFolderImporter.new(processor_args)
+      processor.call
+    end
+  end
+  
   namespace :queues do
     desc "Report the status of the pool manager"
     task :status => :environment do
