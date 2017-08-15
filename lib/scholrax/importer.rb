@@ -6,5 +6,6 @@ module Scholrax::Importer
   autoload :MetadataFileReader
   autoload :WorkImporter
   autoload :WorkImporterJob
+  autoload :WorksFolderImporter
 
 end

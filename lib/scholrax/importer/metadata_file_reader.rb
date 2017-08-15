@@ -1,7 +1,7 @@
 module Scholrax::Importer
   class MetadataFileReader
 
-    DEFAULT_METADATA_MAPPING_FILE = Rails.root.join('config', 'metadata_mapping.yml')
+    DEFAULT_METADATA_MAPPING_FILE = File.join(Rails.root, 'config', 'metadata_mapping.yml')
 
     attr_reader :metadata_doc, :metadata_mapping_file
     attr_accessor :metadata
