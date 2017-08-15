@@ -22,7 +22,7 @@ RSpec.shared_examples "an embargoed work" do
   it "has the correct visibility and embargo attributes" do
     expect(work.visibility).to eq(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE)
     expect(work.embargo).to_not be_nil
-    expect(work.embargo_release_date).to eq('2017-10-15T00:00:00Z')
+    expect(work.embargo_release_date).to eq('2019-10-15T00:00:00Z')
     expect(work.visibility_during_embargo).to eq(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE)
     expect(work.visibility_after_embargo).to eq(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC)
   end
@@ -53,10 +53,18 @@ module Scholrax::Importer
     end
 
     describe "embargo" do
-      let(:export_path) { Rails.root.join('spec', 'fixtures', 'dspace_export', 'embargoed_sample') }
-      let(:work) { subject.call }
-      it_behaves_like "an imported work"
-      it_behaves_like "an embargoed work"
+      describe "future embargo release date" do
+        let(:export_path) { Rails.root.join('spec', 'fixtures', 'dspace_export', 'embargoed_sample') }
+        let(:work) { subject.call }
+        it_behaves_like "an imported work"
+        it_behaves_like "an embargoed work"
+      end
+      describe "non-future embargo release date" do
+        let(:export_path) { Rails.root.join('spec', 'fixtures', 'dspace_export', 'past_embargoed_sample') }
+        let(:work) { subject.call }
+        it_behaves_like "an imported work"
+        it_behaves_like "an unembargoed work"
+      end
     end
 
   end

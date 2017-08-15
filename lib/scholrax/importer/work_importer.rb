@@ -20,16 +20,20 @@ module Scholrax::Importer
     end
 
     def metadata_attributes
+      @metadata_attributes ||= read_metadata_attributes
+    end
+
+    def metadata_files
+      [ File.join(export_path, 'dublin_core.xml') ] + Dir.glob(File.join(export_path, 'metadata_*.xml'))
+    end
+
+    def read_metadata_attributes
       attrs = {}
       metadata_files.each do |metadata_file|
         md_reader = MetadataFileReader.new(metadata_file, metadata_mapping_file)
         attrs.merge!(md_reader.call)
       end
       attrs
-    end
-
-    def metadata_files
-      [ File.join(export_path, 'dublin_core.xml') ] + Dir.glob(File.join(export_path, 'metadata_*.xml'))
     end
 
     def contents_files
@@ -43,7 +47,8 @@ module Scholrax::Importer
     end
 
     def embargoed?
-      metadata_attributes.keys.include?('embargo_release_date')
+      metadata_attributes.keys.include?('embargo_release_date') &&
+          future_embargo_release_date?(metadata_attributes['embargo_release_date'].first)
     end
 
     def visibility
@@ -57,5 +62,16 @@ module Scholrax::Importer
         visibility_after_embargo: Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC }
     end
 
+    def future_embargo_release_date?(date_string)
+      date = parse_embargo_date(date_string)
+      date.present? && date.future? ? true : false
+    end
+
+    def parse_embargo_date(date_string)
+      # Logic cribbed from Hyrax::Actors::InterpretVisibilityActor#parse_date
+      datetime = Time.zone.parse(date_string) if date_string.present?
+      return datetime.to_date unless datetime.nil?
+      nil
+    end
   end
 end
