@@ -67,5 +67,14 @@ module Scholrax::Importer
       end
     end
 
+    describe "missing title" do
+      let(:export_path) { Rails.root.join('spec', 'fixtures', 'dspace_export', 'sample') }
+      before do
+        allow(subject).to receive(:metadata_attributes) { {} }
+      end
+      it "raises an exception" do
+        expect { subject.call }.to raise_error(Hyrax::HyraxError, /Your work must have a title/)
+      end
+    end
   end
 end

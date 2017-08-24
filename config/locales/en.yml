@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+
+  scholrax:
+    importer:
+      errors:
+        invalid_work: "%{source_path} : Invalid work : %{errors}"

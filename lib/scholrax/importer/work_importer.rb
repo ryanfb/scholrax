@@ -16,7 +16,9 @@ module Scholrax::Importer
       attrs.merge!({ admin_set_id: admin_set_id, visibility: visibility })
       attrs.merge!(placeholder_attributes)
       attrs.merge!(embargo_attributes) if embargoed?
-      Scholrax::Importer::Factory.for(Work).new(attrs, export_path, contents_files['ORIGINAL']).run
+      obj = Scholrax::Importer::Factory.for(Work).new(attrs, export_path, contents_files['ORIGINAL']).run
+      raise Hyrax::HyraxError, invalid_work_error_message(obj) unless obj.valid?
+      obj
     end
 
     def metadata_attributes
@@ -72,6 +74,10 @@ module Scholrax::Importer
       datetime = Time.zone.parse(date_string) if date_string.present?
       return datetime.to_date unless datetime.nil?
       nil
+    end
+
+    def invalid_work_error_message(object)
+      I18n.t('scholrax.importer.errors.invalid_work', source_path: export_path, errors: object.errors.full_messages)
     end
   end
 end
