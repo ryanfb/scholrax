@@ -55,7 +55,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'hyrax', git: 'https://github.com/samvera/hyrax', ref: '8dbd9766d45e476412984be74aa749ef11a9bad6'
+gem 'hyrax', '2.0.0.beta1'
 
 group :development, :test do
   gem 'database_cleaner'
