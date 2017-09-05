@@ -34,3 +34,6 @@ fits.log
 
 # Ignore ruby-gemset file.
 .ruby-gemset
+
+# Ignore RubyMine created folder.
+.idea

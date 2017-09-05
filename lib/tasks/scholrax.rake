@@ -2,9 +2,9 @@ namespace :scholrax do
 
   namespace :dspace_importer do
     desc "Scan folder of export folders and queue up as work importer jobs."
-    puts "Importer parms: EXPORT_FOLDER, ADMIN_SET, optional: METADATA_MAPPING_FILE"
- 
+
     task :call => :environment do
+      puts "Importer parms: EXPORT_FOLDER, ADMIN_SET, optional: METADATA_MAPPING_FILE"
       raise "Must specify folder path to exported folders. Ex.: EXPORT_FOLDER=/path/to/folders" unless ENV["EXPORT_FOLDER"]
       raise "Must specify an admin set id. Ex.: ADMIN_SET=adminset_a" unless ENV["ADMIN_SET"]
 
