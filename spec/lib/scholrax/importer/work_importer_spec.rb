@@ -76,5 +76,42 @@ module Scholrax::Importer
         expect { subject.call }.to raise_error(Hyrax::HyraxError, /Your work must have a title/)
       end
     end
+
+    describe "#work_exists?" do
+      let(:export_path) { Rails.root.join('spec', 'fixtures', 'dspace_export', 'sample') }
+
+      describe "handle exists" do
+        let(:handle) { "2345/98765" }
+        before do
+          allow(subject).to receive(:work_handle) { handle }
+        end
+
+        describe "work exists" do
+          before do
+            Work.create(title: ["Testing handle"],
+                identifier: ["#{WorkImporter::HANDLE_IDENTIFIER_PREFIX}#{handle}"])
+          end
+          it "returns true" do
+            expect(subject.work_exists?).to be true
+          end
+        end
+
+        describe "work does not exist" do
+          it "returns false" do
+            expect(subject.work_exists?).to be false
+          end
+        end
+      end
+
+      describe "handle does not exist" do
+        before do
+          allow(subject).to receive(:work_handle) { nil }
+        end
+        it "returns false" do
+          expect(subject.work_exists?).to be false
+        end
+      end
+    end
+
   end
 end

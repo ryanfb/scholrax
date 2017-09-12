@@ -3,6 +3,8 @@ module Scholrax::Importer
 
     attr_reader :admin_set_id, :export_path, :metadata_mapping_file
 
+    HANDLE_IDENTIFIER_PREFIX = "http://hdl.handle.net/"
+
     def initialize(export_path:,
                    admin_set_id: AdminSet::DEFAULT_ID,
                    metadata_mapping_file:  MetadataFileReader::DEFAULT_METADATA_MAPPING_FILE)
@@ -12,13 +14,29 @@ module Scholrax::Importer
     end
 
     def call
-      attrs = metadata_attributes
-      attrs.merge!({ admin_set_id: admin_set_id, visibility: visibility })
-      attrs.merge!(placeholder_attributes)
-      attrs.merge!(embargo_attributes) if embargoed?
-      obj = Scholrax::Importer::Factory.for(Work).new(attrs, export_path, contents_files['ORIGINAL']).run
-      raise Hyrax::HyraxError, invalid_work_error_message(obj) unless obj.valid?
-      obj
+      unless work_exists?
+        attrs = metadata_attributes
+        attrs.merge!({ admin_set_id: admin_set_id, visibility: visibility })
+        attrs.merge!(placeholder_attributes)
+        attrs.merge!(embargo_attributes) if embargoed?
+        obj = Scholrax::Importer::Factory.for(Work).new(attrs, export_path, contents_files['ORIGINAL']).run
+        raise Hyrax::HyraxError, invalid_work_error_message(obj) unless obj.valid?
+        obj
+      end
+    end
+
+    def work_exists?
+      if work_handle
+        handle_identifier = work_handle.prepend(HANDLE_IDENTIFIER_PREFIX)
+        Work.exists?(identifier: handle_identifier)
+      else
+        false
+      end
+    end
+
+    def work_handle
+      handle_file_reader = HandleFileReader.new(File.join(export_path, 'handle'))
+      handle_file_reader.handle_id
     end
 
     def metadata_attributes
