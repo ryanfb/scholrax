@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/aaron-collier/sword.git
+  revision: df35762c481c1ede27c976602ae9d1997a2b846e
+  specs:
+    sword (0.1.0)
+      rails (~> 5.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -1193,6 +1200,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
+  sword!
   therubyracer
   turbolinks (~> 5)
   tzinfo-data

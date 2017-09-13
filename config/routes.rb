@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   devise_for :users
   mount Qa::Engine => '/authorities'
   mount Hyrax::Engine, at: '/'
+  mount Sword::Engine => "/sword"
   resources :welcome, only: 'index'
   root 'hyrax/homepage#index'
   curation_concerns_basic_routes
