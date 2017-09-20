@@ -1,20 +1,7 @@
 GIT
-<<<<<<< Updated upstream
-  remote: https://github.com/osulibraries/blacklight_oai_provider.git
-  revision: a6a0b9359e179445b633e16856f00c0604c89f57
-=======
-  remote: https://github.com/aaron-collier/sword.git
-  revision: df35762c481c1ede27c976602ae9d1997a2b846e
-  branch: master
-  specs:
-    sword (0.1.0)
-      rails (~> 5.0.3)
-
-GIT
   remote: https://github.com/osulibraries/blacklight_oai_provider.git
   revision: a6a0b9359e179445b633e16856f00c0604c89f57
   branch: master
->>>>>>> Stashed changes
   specs:
     blacklight_oai_provider (1.4.1)
       blacklight (>= 6.1)
