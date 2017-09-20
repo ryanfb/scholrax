@@ -30,7 +30,9 @@ class SolrDocument
     creator:     'creator_tesim',
     date:        'date_created_tesim',
     description: 'description_tesim',
+    language:    'language_tesim',
     rights:      'rights_statement_tesim',
+    subject:     'subject_tesim',
     title:       'title_tesim',
     type:        'resource_type_tesim')
 
