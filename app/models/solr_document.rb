@@ -26,7 +26,15 @@ class SolrDocument
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
 
-  # Do content negotiation for AF models. 
+  field_semantics.merge!(
+    creator:     'creator_tesim',
+    date:        'date_created_tesim',
+    description: 'description_tesim',
+    rights:      'rights_statement_tesim',
+    title:       'title_tesim',
+    type:        'resource_type_tesim')
+
+  # Do content negotiation for AF models.
 
   use_extension( Hydra::ContentNegotiation )
 end
