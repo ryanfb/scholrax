@@ -57,8 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'hyrax', '2.0.0.beta1'
 
-gem 'blacklight_oai_provider', :git => 'https://github.com/osulibraries/blacklight_oai_provider.git'
-
 group :development, :test do
   gem 'database_cleaner'
   gem 'solr_wrapper', '>= 0.3'
