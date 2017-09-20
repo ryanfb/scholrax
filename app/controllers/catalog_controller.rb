@@ -1,6 +1,5 @@
 class CatalogController < ApplicationController
   include Hydra::Catalog
-  include BlacklightOaiProvider::CatalogControllerBehavior
   include Hydra::Controller::ControllerBehavior
   include BlacklightOaiProvider::CatalogControllerBehavior
 
