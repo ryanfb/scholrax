@@ -75,3 +75,5 @@ group :production do
   gem 'pg'
   gem 'therubyracer', platforms: :ruby
 end
+
+gem 'blacklight_oai_provider', git: 'https://github.com/osulibraries/blacklight_oai_provider.git', branch: 'master'

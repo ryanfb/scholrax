@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/osulibraries/blacklight_oai_provider.git
+  revision: a6a0b9359e179445b633e16856f00c0604c89f57
+  branch: master
+  specs:
+    blacklight_oai_provider (1.4.1)
+      blacklight (>= 6.1)
+      oai (~> 0.4.0)
+      rails (>= 4.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -631,6 +641,8 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday-encoding (0.0.4)
       faraday
+    faraday_middleware (0.12.2)
+      faraday (>= 0.7.4, < 1.0)
     fcrepo_wrapper (0.8.0)
       ruby-progressbar
     ffi (1.9.18)
@@ -881,6 +893,10 @@ GEM
     noid (0.9.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
+    oai (0.4.0)
+      builder (>= 3.1.0)
+      faraday
+      faraday_middleware
     oauth (0.5.3)
     oauth2 (1.4.0)
       faraday (>= 0.8, < 0.13)
@@ -1170,6 +1186,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  blacklight_oai_provider!
   byebug
   capybara (>= 2.4.0)
   coffee-rails (~> 4.2)

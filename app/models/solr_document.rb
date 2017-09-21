@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 class SolrDocument
   include Blacklight::Solr::Document
+  include BlacklightOaiProvider::SolrDocumentBehavior
+
+  use_extension Blacklight::Document::DublinCore
+
   include Blacklight::Gallery::OpenseadragonSolrDocument
 
   # Adds Hyrax behaviors to the SolrDocument.
@@ -22,7 +26,17 @@ class SolrDocument
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
 
-  # Do content negotiation for AF models. 
+  field_semantics.merge!(
+    creator:     'creator_tesim',
+    date:        'date_created_tesim',
+    description: 'description_tesim',
+    language:    'language_tesim',
+    rights:      'rights_statement_tesim',
+    subject:     'subject_tesim',
+    title:       'title_tesim',
+    type:        'resource_type_tesim')
+
+  # Do content negotiation for AF models.
 
   use_extension( Hydra::ContentNegotiation )
 end
