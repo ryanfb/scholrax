@@ -8,7 +8,6 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'active_fedora/cleaner'
 require 'database_cleaner'
-require 'support/share_db_connection'
 
 DatabaseCleaner.strategy = :truncation
 
@@ -30,6 +29,8 @@ DatabaseCleaner.strategy = :truncation
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
+
+require 'support/share_db_connection'
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
