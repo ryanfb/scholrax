@@ -8,6 +8,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'active_fedora/cleaner'
 require 'database_cleaner'
+require 'support/share_db_connection'
 
 DatabaseCleaner.strategy = :truncation
 

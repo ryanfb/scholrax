@@ -27,7 +27,7 @@ RSpec.feature 'Create a Work', js: true do
       choose "payload_concern", option: "Work"
       click_button "Create work"
 
-      expect(page).to have_content "Add New Work"
+      page.assert_text "Add New Work"
     end
   end
 end

@@ -71,7 +71,8 @@ group :development, :test do
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
   gem 'capybara', '>= 2.4.0'
-  gem 'selenium-webdriver'
+  gem 'capybara-maleficent', require: false
+  gem 'poltergeist'
 end
 
 group :production do
