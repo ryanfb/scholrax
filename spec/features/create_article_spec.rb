@@ -20,12 +20,18 @@ RSpec.feature 'Create a Article', js: true do
 
     scenario do
       visit '/dashboard'
-      click_link "Works"
-      click_link "Add new work"
+      Capybara::Maleficent.with_sleep_injection(handled_exceptions: [Capybara::ExpectationNotMet]) do
+        click_link "Works"
+      end
+      Capybara::Maleficent.with_sleep_injection(handled_exceptions: [Capybara::ExpectationNotMet]) do
+        click_link "Add new work"
+      end
 
       # If you generate more than one work uncomment these lines
       choose "payload_concern", option: "Article"
-      click_button "Create work"
+      Capybara::Maleficent.with_sleep_injection(handled_exceptions: [Capybara::ExpectationNotMet]) do
+        click_button "Create work"
+      end
 
       page.assert_text "Add New Article"
     end
