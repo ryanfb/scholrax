@@ -63,6 +63,7 @@ group :development, :test do
 end
 
 gem 'sword', :git => 'https://github.com/aaron-collier/sword.git'
+gem 'activesupport-decorators', '~> 2.1'
 
 gem 'rsolr', '~> 1.0'
 gem 'devise'

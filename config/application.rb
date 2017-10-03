@@ -34,5 +34,6 @@ module Scholrax
       end
     end
 
+    ActiveSupportDecorators.paths << File.join(Rails.application.root, 'app/**')
   end
 end
